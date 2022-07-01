@@ -12,15 +12,11 @@ export default defineComponent({
 
     return () => (
       <div>
-        <h1>tsx-demo</h1>
-        {list.map(s => (
-          <li
-            onClick={() => {
-              console.log(s);
-            }}>
-            {s}
-          </li>
-        ))}
+        <h1 class="title">tsx-demo</h1>
+        <p class="title">tsx-p</p>
+        <ul>
+          {list.map(s => (<li>{s}</li>))}
+        </ul>
       </div>
     );
   }

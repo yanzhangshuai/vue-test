@@ -9,15 +9,17 @@ describe('tsx-demo', () => {
   const wrapper = mount(TsxDemoComponent);
 
   it('h1 exist', () => {
-    expect(wrapper.find('h1').text()).toBe('tsx-demo');
+    const h1 = wrapper.find('h1');
+    expect(h1.exists()).toBe(true);
+    expect(h1.text()).toBe('tsx-demo');
   });
 
   it('li exist', () => {
     const li = wrapper.findAll('li');
     expect(li.length).toBe(5);
 
-    const mockFn = vi.fn(li[0].element.onclick);
-    mockFn(null);
-    expect(mockFn).toHaveBeenCalledTimes(1);
+    li.forEach((item, i) => {
+      expect(item.text()).toBe(`${i + 1}`);
+    })
   });
 });
